@@ -95,46 +95,48 @@ const Expenses = ({ navigation, route }) => {
           <TextInput placeholder="Search" style={styles.input} />
         </View>
 
-        {expenses.map((item) => (
-          <View style={styles.containerExpense} key={item.id}>
-            <View>
-              <Text style={styles.expenseTitle}>{item.name}</Text>
-              <Text style={styles.expenseDescription}>₱ {item.expense}</Text>
-              <Text style={styles.expenseDescription}>{item.date}</Text>
-              <Text style={styles.expenseDescription}>
-                {item.type_id === 1 ? "Fixed Expenses" : "Variable Expenses"}
-              </Text>
-              <Text style={styles.expenseDescription}>
-                {item.goal !== null
-                  ? `Saving Goal Name: ${item.goal.title}`
-                  : null}
-              </Text>
-              <Text style={styles.expenseDescription}>
-                {`Category: ${item.category}`}
-              </Text>
+        {expenses
+          .filter((item) => item.goal_id == 0)
+          .map((item) => (
+            <View style={styles.containerExpense} key={item.id}>
+              <View>
+                <Text style={styles.expenseTitle}>{item.name}</Text>
+                <Text style={styles.expenseDescription}>₱ {item.expense}</Text>
+                <Text style={styles.expenseDescription}>{item.date}</Text>
+                <Text style={styles.expenseDescription}>
+                  {item.type_id === 1 ? "Fixed Expenses" : "Variable Expenses"}
+                </Text>
+                <Text style={styles.expenseDescription}>
+                  {item.goal !== null
+                    ? `Saving Goal Name: ${item.goal.title}`
+                    : null}
+                </Text>
+                <Text style={styles.expenseDescription}>
+                  {`Category: ${item.category}`}
+                </Text>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <Ionicons
+                  name="pencil-sharp"
+                  size={24}
+                  color="black"
+                  onPress={() =>
+                    navigation.navigate("Edit Expense", {
+                      item: item,
+                      goals: goals,
+                    })
+                  }
+                />
+                <Ionicons
+                  name="trash"
+                  size={24}
+                  color="red"
+                  style={{ marginLeft: 10 }}
+                  onPress={() => handleDelete(item.id)}
+                />
+              </View>
             </View>
-            <View style={{ flexDirection: "row" }}>
-              <Ionicons
-                name="pencil-sharp"
-                size={24}
-                color="black"
-                onPress={() =>
-                  navigation.navigate("Edit Expense", {
-                    item: item,
-                    goals: goals,
-                  })
-                }
-              />
-              <Ionicons
-                name="trash"
-                size={24}
-                color="red"
-                style={{ marginLeft: 10 }}
-                onPress={() => handleDelete(item.id)}
-              />
-            </View>
-          </View>
-        ))}
+          ))}
       </View>
     </ScrollView>
   );
