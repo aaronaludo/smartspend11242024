@@ -102,9 +102,7 @@ const Expenses = ({ navigation, route }) => {
               <Text style={styles.expenseDescription}>₱ {item.expense}</Text>
               <Text style={styles.expenseDescription}>{item.date}</Text>
               <Text style={styles.expenseDescription}>
-                {item.type_id === 1
-                  ? "Expected expense"
-                  : "Not Expected expense"}
+                {item.type_id === 1 ? "Fixed Expenses" : "Variable Expenses"}
               </Text>
               <Text style={styles.expenseDescription}>
                 {item.goal !== null

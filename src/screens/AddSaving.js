@@ -30,8 +30,8 @@ const AddSaving = ({ navigation, route }) => {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [items, setItems] = useState([
-    { label: "Expected", value: 1 },
-    { label: "Not Expected", value: 2 },
+    { label: "Fixed Expenses", value: 1 },
+    { label: "Variable Expenses", value: 2 },
   ]);
   const itemsWithSelect = goals.map((item) => ({
     label: item.title,
@@ -181,8 +181,8 @@ const AddSaving = ({ navigation, route }) => {
                       </Text>
                       <Text style={styless.expenseDescription}>
                         {item.type_id === 1
-                          ? "Expected expense"
-                          : "Not Expected expense"}
+                          ? "Fixed Expenses"
+                          : "Variable Expenses"}
                       </Text>
                       <Text style={styless.expenseDescription}>
                         {item.goal !== null

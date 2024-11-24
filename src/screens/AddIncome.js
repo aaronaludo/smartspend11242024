@@ -13,8 +13,8 @@ const AddIncome = ({ navigation }) => {
   const [type, setType] = useState(0);
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState([
-    { label: "Expected", value: 1 },
-    { label: "Not Expected", value: 2 },
+    { label: "Fixed Expenses", value: 1 },
+    { label: "Variable Expenses", value: 2 },
   ]);
 
   const onChange = (event, selectedDate) => {

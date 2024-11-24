@@ -29,17 +29,21 @@ const ExpenseCategory = () => {
             },
           }
         );
+        const transformedFixedExpenses = response.data.fixedExpenses.map(
+          (expense) => ({
+            ...expense,
+            item: Object.values(expense.item),
+          })
+        );
 
-        console.log(response.data);
-        setFixedExpenses(response.data.fixedExpenses);
-
-        // Transform variableExpenses' `item` object into an array
         const transformedVariableExpenses = response.data.variableExpenses.map(
           (expense) => ({
             ...expense,
-            item: Object.values(expense.item), // Convert object to array
+            item: Object.values(expense.item),
           })
         );
+
+        setFixedExpenses(transformedFixedExpenses);
         setVariableExpenses(transformedVariableExpenses);
       } catch (error) {
         console.error(error);

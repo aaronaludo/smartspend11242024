@@ -29,7 +29,8 @@ const AddExpense = ({ navigation, route }) => {
   const [type1, setType1] = useState(0);
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
-  const [selectedExpenseType, setSelectedExpenseType] = useState(null);
+  const [selectedExpenseType, setSelectedExpenseType] = useState(1);
+  console.log(selectedExpenseType);
   const [items, setItems] = useState([
     { label: "Fixed Expenses", value: 1 },
     { label: "Variable Expenses", value: 2 },
@@ -114,7 +115,7 @@ const AddExpense = ({ navigation, route }) => {
         {
           name: name,
           expense: expense,
-          type_id: type,
+          type_id: selectedExpenseType,
           // goal_id: type1,
           category: category,
           date: date.toLocaleDateString("en-US", {

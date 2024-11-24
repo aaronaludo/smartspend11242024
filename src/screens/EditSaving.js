@@ -19,8 +19,8 @@ const EditSaving = ({ navigation, route }) => {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [items, setItems] = useState([
-    { label: "Expected", value: 1 },
-    { label: "Not Expected", value: 2 },
+    { label: "Fixed Expenses", value: 1 },
+    { label: "Variable Expenses", value: 2 },
   ]);
   const itemsWithSelect = goals.map((item) => ({
     label: item.title,
