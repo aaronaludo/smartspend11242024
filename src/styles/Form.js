@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     elevation: 5,
   },
   inputButton: {
-    backgroundColor: "#41DC40",
+    backgroundColor: "#157347",
     width: "100%",
     height: 40,
     justifyContent: "center",

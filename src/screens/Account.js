@@ -90,7 +90,7 @@ export default function Account({ navigation }) {
                 name="user"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Account Information</Text>
             </View>
@@ -107,7 +107,7 @@ export default function Account({ navigation }) {
                 name="edit"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Risk Assessment</Text>
             </View>
@@ -128,7 +128,7 @@ export default function Account({ navigation }) {
                 name="file"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Plans</Text>
             </View>
@@ -145,7 +145,7 @@ export default function Account({ navigation }) {
                 name="book"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Need and Priorities</Text>
             </View>
@@ -167,7 +167,7 @@ export default function Account({ navigation }) {
                 name="book"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Protection</Text>
             </View>
@@ -185,7 +185,7 @@ export default function Account({ navigation }) {
                 name="calendar"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Tap Widget</Text>
             </View>
@@ -202,7 +202,7 @@ export default function Account({ navigation }) {
                 name="book"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Learning Features</Text>
             </View>
@@ -219,7 +219,7 @@ export default function Account({ navigation }) {
                 name="unlock"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Change Password</Text>
             </View>
@@ -233,7 +233,7 @@ export default function Account({ navigation }) {
                 name="chevrons-left"
                 size={24}
                 color="black"
-                style={{ marginRight: 30, color: "#41DC40" }}
+                style={{ marginRight: 30, color: "#157347" }}
               />
               <Text style={styles.buttonText}>Logout</Text>
             </View>
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 100,
     borderWidth: 2,
-    borderColor: "#41DC40",
+    borderColor: "#157347",
   },
   title: {
     fontSize: 20,

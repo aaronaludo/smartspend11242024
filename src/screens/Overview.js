@@ -163,21 +163,21 @@ const Overview = ({ navigation }) => {
         title={styles.title}
         description={styles.description}
         titleLabel="Total Income Monitoring"
-        descriptionLabel={`₱ ${Math.round(income)}`}
+        descriptionLabel={`₱ ${Number(Math.round(income)).toLocaleString()}`}
       />
       <Box
         container={styles.container}
         title={styles.title}
         description={styles.description}
         titleLabel="Total Expense Monitoring"
-        descriptionLabel={`₱ ${Math.round(expense)}`}
+        descriptionLabel={`₱ ${Number(Math.round(expense)).toLocaleString()}`}
       />
       <Box
         container={styles.container}
         title={styles.title}
         description={styles.description}
         titleLabel="Total Savings Monitoring"
-        descriptionLabel={`₱ ${Math.round(saving)}`}
+        descriptionLabel={`₱ ${Number(Math.round(saving)).toLocaleString()}`}
       />
     </ScrollView>
   );

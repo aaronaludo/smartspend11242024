@@ -68,7 +68,7 @@ const Expenses = ({ navigation, route }) => {
           <Ionicons
             name="add-circle"
             size={40}
-            color="#41DC40"
+            color="#157347"
             onPress={() =>
               navigation.navigate("Add Expense", {
                 goals: goals,
@@ -87,7 +87,7 @@ const Expenses = ({ navigation, route }) => {
           <Ionicons
             name="open"
             size={40}
-            color="#41DC40"
+            color="#157347"
             onPress={() => navigation.navigate("Expense Category")}
           />
         </View>
@@ -101,7 +101,9 @@ const Expenses = ({ navigation, route }) => {
             <View style={styles.containerExpense} key={item.id}>
               <View>
                 <Text style={styles.expenseTitle}>{item.name}</Text>
-                <Text style={styles.expenseDescription}>₱ {item.expense}</Text>
+                <Text style={styles.expenseDescription}>
+                  ₱ {Number(item.expense).toLocaleString()}
+                </Text>
                 <Text style={styles.expenseDescription}>{item.date}</Text>
                 <Text style={styles.expenseDescription}>
                   {item.type_id === 1 ? "Fixed Expenses" : "Variable Expenses"}
@@ -184,7 +186,7 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   inputButton: {
-    backgroundColor: "#41DC40",
+    backgroundColor: "#157347",
     width: "100%",
     height: 40,
     justifyContent: "center",

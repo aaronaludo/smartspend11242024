@@ -69,7 +69,7 @@ const Savings = ({ navigation, route }) => {
             <Ionicons
               name="add-circle"
               size={40}
-              color="#41DC40"
+              color="#157347"
               onPress={() =>
                 navigation.navigate("Add Saving", {
                   goals: goals,
@@ -84,7 +84,7 @@ const Savings = ({ navigation, route }) => {
           alignItems: "center",
           marginBottom: 20,
         }}>
-          <Ionicons name="open" size={40} color="#41DC40" onPress={() =>
+          <Ionicons name="open" size={40} color="#157347" onPress={() =>
               navigation.navigate("Saving Category")
             }/>
         </View> */}
@@ -96,7 +96,9 @@ const Savings = ({ navigation, route }) => {
           <View style={styles.containerExpense} key={item.id}>
             <View>
               <Text style={styles.expenseTitle}>{item.name}</Text>
-              <Text style={styles.expenseDescription}>₱ {item.expense}</Text>
+              <Text style={styles.expenseDescription}>
+                ₱ {Number(item.expense).toLocaleString()}
+              </Text>
               <Text style={styles.expenseDescription}>{item.date}</Text>
               <Text style={styles.expenseDescription}>
                 {item.goal !== null
@@ -173,7 +175,7 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   inputButton: {
-    backgroundColor: "#41DC40",
+    backgroundColor: "#157347",
     width: "100%",
     height: 40,
     justifyContent: "center",

@@ -74,7 +74,7 @@ const ExpenseCategory = () => {
           keyExtractor={(subItem) => subItem.id.toString()}
           renderItem={({ item: subItem }) => (
             <Text style={styles.listItem}>
-              - {subItem.name} (₱{subItem.expense})
+              - {subItem.name} (₱{Number(subItem.expense).toLocaleString()})
             </Text>
           )}
         />

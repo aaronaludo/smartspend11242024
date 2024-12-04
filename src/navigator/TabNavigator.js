@@ -20,7 +20,7 @@ export default function App({ navigation }) {
             <Feather name="user" size={24} color="black" />
           </TouchableOpacity>
         ),
-        tabBarActiveTintColor: "#41DC40",
+        tabBarActiveTintColor: "#157347",
       })}
     >
       <Tab.Screen
@@ -31,7 +31,7 @@ export default function App({ navigation }) {
             <Feather
               name="home"
               size={24}
-              color={focused ? "#41DC40" : "grey"}
+              color={focused ? "#157347" : "grey"}
             />
           ),
         }}
@@ -44,7 +44,7 @@ export default function App({ navigation }) {
             <Feather
               name="calendar"
               size={24}
-              color={focused ? "#41DC40" : "grey"}
+              color={focused ? "#157347" : "grey"}
             />
           ),
         }}
@@ -57,7 +57,7 @@ export default function App({ navigation }) {
             <Feather
               name="bell"
               size={24}
-              color={focused ? "#41DC40" : "grey"}
+              color={focused ? "#157347" : "grey"}
             />
           ),
         }}

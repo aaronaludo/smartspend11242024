@@ -165,7 +165,7 @@ export default function Monthly({ navigation }) {
           ]}
         >
           {" "}
-          ₱ {monthlyCashflow}
+          ₱ {Number(monthlyCashflow).toLocaleString()}
         </Text>
         <View style={styless.container}>
           <BarChart

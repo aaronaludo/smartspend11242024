@@ -68,7 +68,7 @@ const CreateGoal = ({ navigation, route }) => {
             <Ionicons
               name="add-circle"
               size={40}
-              color="#41DC40"
+              color="#157347"
               onPress={() => navigation.navigate("Add 1 Tap Goal Savings")}
             />
           )}
@@ -83,11 +83,13 @@ const CreateGoal = ({ navigation, route }) => {
               <Text style={styles.incomeTitle}>Title: {item.title}</Text>
               <Text style={styles.incomeDescription}>
                 Cost: ₱
-                {item.cost -
-                  item.expenses.reduce(
-                    (acc, expense) => acc + parseFloat(expense.expense),
-                    0
-                  )}
+                {Number(
+                  item.cost -
+                    item.expenses.reduce(
+                      (acc, expense) => acc + parseFloat(expense.expense),
+                      0
+                    )
+                ).toLocaleString()}
               </Text>
               <Text style={styles.incomeDescription}>
                 Progress:{" "}
@@ -114,7 +116,9 @@ const CreateGoal = ({ navigation, route }) => {
                 {item.expenses.map((expense) => (
                   <View key={expense.id}>
                     <Text style={styles.expenseDescription}>
-                      {`${expense.name} - ₱${expense.expense} - ${expense.date}`}
+                      {`${expense.name} - ₱${Number(
+                        expense.expense
+                      ).toLocaleString()} - ${expense.date}`}
                     </Text>
                   </View>
                 ))}
@@ -188,7 +192,7 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   inputButton: {
-    backgroundColor: "#41DC40",
+    backgroundColor: "#157347",
     width: "100%",
     height: 40,
     justifyContent: "center",

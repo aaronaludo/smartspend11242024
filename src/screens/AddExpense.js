@@ -196,7 +196,7 @@ const AddExpense = ({ navigation, route }) => {
                     <View>
                       <Text style={styless.expenseTitle}>{item.name}</Text>
                       <Text style={styless.expenseDescription}>
-                        ₱ {item.expense}
+                        ₱ {Number(item.expense).toLocaleString()}
                       </Text>
                       <Text style={styless.expenseDescription}>
                         {item.date}
@@ -390,7 +390,7 @@ const styless = StyleSheet.create({
     color: "grey",
   },
   inputButton: {
-    backgroundColor: "#41DC40",
+    backgroundColor: "#157347",
     width: "100%",
     height: 40,
     justifyContent: "center",

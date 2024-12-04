@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
+  FlatList,
   StyleSheet,
   RefreshControl,
 } from "react-native";
@@ -143,6 +144,21 @@ const Plans = ({ navigation, route }) => {
     }
   };
 
+  const renderTableRow = (label, value, additionalValue = "") => (
+    <View>
+      <View style={styles.tableRow}>
+        <Text style={[styles.tableCell, styles.tableCellLabel]}>{label}</Text>
+        <Text style={styles.tableCell}>
+          {value}
+          {additionalValue ? (
+            <Text style={styles.additionalValue}>{additionalValue}</Text>
+          ) : null}
+        </Text>
+      </View>
+      <View style={styles.tableLine} />
+    </View>
+  );
+
   return (
     <ScrollView
       refreshControl={
@@ -163,85 +179,57 @@ const Plans = ({ navigation, route }) => {
               : "Plans Recommendations"}
           </Text>
         </View>
-        {plans.map((item) => (
-          <View style={styles.containerContent} key={item.plan.id}>
-            <View style={styles.contents}>
-              <View style={{ width: "100%" }}>
-                {/* <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Count: </Text>
-                  {item.count}
-                </Text> */}
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Category: </Text>
-                  {item.plan.category === "retirement"
-                  ? "Plans Recommendations - Retirement"
-                  : item.plan.category === "medium_to_long"
-                  ? "Plans Recommendations - Medium to Long Term Goals"
-                  : item.plan.category === "ready_fund"
-                  ? "Plans Recommendations - Ready Fund for Critical Illness (Critical illness Protection)"
-                  : item.plan.category === "estate_conservation"
-                  ? "Plans Recommendations - Estate Conservation"
-                  : "Plans Recommendations"}
-                </Text>
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Plan Name: </Text>
-                  {item.plan.title}
-                </Text>
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Minimum Salary: </Text>
-                  <Text>
-                    {item.plan.minimum_salary}{" "}
-                    <Text style={{ color: "green", fontWeight: "bold" }}>
-                      (Current Average Salary: {minimumSalary})
-                    </Text>
-                  </Text>
-                </Text>
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Minimum Age: </Text>
-                  <Text>
-                    {item.plan.minimum_age}{" "}
-                    <Text style={{ color: "green", fontWeight: "bold" }}>
-                      (Current Age: {minimumAge})
-                    </Text>
-                  </Text>
-                </Text>
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Total Income: </Text>
-                  <Text>
-                    ₱{" "}{item.plan.total_income}{" "}
-                    <Text style={{ color: "green", fontWeight: "bold" }}>
-                      (Current Total Income: {totalIncome})
-                    </Text>
-                  </Text>
-                </Text>
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Total Expense: </Text>
-                  <Text>
-                    ₱{" "}{item.plan.total_expense}{" "}
-                    <Text style={{ color: "green", fontWeight: "bold" }}>
-                      (Current Total Expense: {totalExpense})
-                    </Text>
-                  </Text>
-                </Text>
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>
-                    Minimum Monthly Cashflow:{" "}
-                  </Text>
-                  <Text>
-                    {item.plan.minimum_monthly_cashflow}{" "}
-                    <Text style={{ color: "green", fontWeight: "bold" }}>
-                      (Current Monthly Cashflow: {minimumMonthlyCashflow})
-                    </Text>
-                  </Text>
-                </Text>
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Cost: </Text>
-                  <Text>{item.plan.cost}</Text>
-                </Text>
-                <Text style={{ marginLeft: 5, marginBottom: 10 }}>
-                  <Text style={{ fontWeight: "bold" }}>Months: </Text>
-                  <Text>{item.plan.months}</Text>
-                </Text>
+
+        <FlatList
+          data={plans}
+          keyExtractor={(item) => item.plan.id.toString()}
+          renderItem={({ item }) => (
+            <View style={styles.tableContainer}>
+              <Text style={styles.tableTitle}>{item.plan.title}</Text>
+              <View style={styles.tableLine} />
+              {renderTableRow(
+                "Minimum Salary",
+                `₱ ${Number(item.plan.minimum_salary).toLocaleString()}`,
+                `(Current Average Salary: ₱${Number(
+                  minimumSalary
+                ).toLocaleString()})`
+              )}
+              {renderTableRow(
+                "Minimum Age",
+                Number(item.plan.minimum_age).toLocaleString(),
+                `(Current Age: ${Number(minimumAge).toLocaleString()})`
+              )}
+              {renderTableRow(
+                "Total Income",
+                `₱ ${Number(item.plan.total_income).toLocaleString()}`,
+                `(Current Total Income: ₱${Number(
+                  totalIncome
+                ).toLocaleString()})`
+              )}
+              {renderTableRow(
+                "Total Expenses",
+                `₱ ${Number(item.plan.total_expense).toLocaleString()}`,
+                `(Current Total Expenses: ₱${Number(
+                  totalExpense
+                ).toLocaleString()})`
+              )}
+              {renderTableRow(
+                "Minimum Cash Flow",
+                `₱ ${Number(
+                  item.plan.minimum_monthly_cashflow
+                ).toLocaleString()}`,
+                `(Current Monthly Cash Flow: ₱${Number(
+                  minimumMonthlyCashflow
+                ).toLocaleString()})`
+              )}
+              {renderTableRow(
+                "Cost",
+                `₱ ${Number(item.plan.cost).toLocaleString()}`
+              )}
+
+              {renderTableRow("Months", item.plan.months)}
+
+              <View style={styles.buttonGroup}>
                 <TouchableOpacity
                   style={styles.buttonContainer}
                   onPress={() =>
@@ -276,8 +264,8 @@ const Plans = ({ navigation, route }) => {
                 </TouchableOpacity>
               </View>
             </View>
-          </View>
-        ))}
+          )}
+        />
       </View>
     </ScrollView>
   );
@@ -287,80 +275,76 @@ export default Plans;
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 20,
-    marginRight: 20,
+    padding: 20,
   },
   containerHeader: {
     backgroundColor: "#EFEFEF",
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingRight: 20,
-    paddingLeft: 20,
-    marginTop: 10,
+    padding: 10,
+    borderRadius: 10,
     marginBottom: 10,
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  containerImage: {
-    padding: 15,
-    backgroundColor: "#fff",
-    marginVertical: 10,
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    maxHeight: 500,
-  },
-  containerContent: {
-    backgroundColor: "#fff",
-    paddingVertical: 15,
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    marginVertical: 3,
   },
   titleHeader: {
     fontWeight: "bold",
+    fontSize: 16,
   },
-  image: { width: "100%", height: 300, borderRadius: 20 },
-  contents: {
+  tableContainer: {
+    backgroundColor: "#fff",
+    padding: 10,
+    borderRadius: 10,
+    marginBottom: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  tableTitle: {
+    fontWeight: "bold",
+    fontSize: 16,
+    marginBottom: 10,
+    textAlign: "center",
+  },
+  tableRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  tableCell: {
+    flex: 1,
+    textAlign: "right",
+    paddingHorizontal: 5,
+  },
+  tableCellLabel: {
+    fontWeight: "bold",
+    textAlign: "left",
+  },
+  additionalValue: {
+    color: "green",
+    fontWeight: "bold",
+    marginLeft: 5,
+  },
+  tableLine: {
+    height: 1,
+    backgroundColor: "#ddd",
+    marginVertical: 5,
+  },
+  buttonGroup: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
   },
   buttonContainer: {
-    backgroundColor: "#41DC40",
-    borderRadius: 10,
+    backgroundColor: "#157347",
     padding: 10,
+    borderRadius: 5,
+    flex: 1,
+    marginHorizontal: 5,
     alignItems: "center",
-    justifyContent: "center",
-    marginTop: 8,
-    width: "100%",
   },
   buttonText: {
-    color: "white",
-    fontSize: 16,
+    color: "#fff",
     fontWeight: "bold",
   },
 });
